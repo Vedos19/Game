@@ -4,7 +4,6 @@ public class Fight {
     public static int fight(Player player, Mob mob){
         int choice, live = 1;
         player.reset(player);
-        double dmg_skill; //dmg_skill - solving error with double damage message
         while(player.hp>0 && mob.hp>0) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("\n" + player.nick + " (" + player.hp + ") vs " + mob.nick + " (" + mob.hp + ")\n");
