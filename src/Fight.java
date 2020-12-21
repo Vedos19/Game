@@ -11,7 +11,6 @@ public class Fight {
         int choice, live = 1;
         double status;
         player.reset(player);
-        double dmg_skill; //dmg_skill - solving error with double damage message
         while(player.hp>0 && mob.hp>0) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("\n" + player.nick + " (" + ANSI_RED + player.hp + ANSI_RESET + "|" +
