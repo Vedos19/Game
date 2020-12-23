@@ -9,7 +9,7 @@ public class Fight {
 
     public static int fight(Player player, Mob mob){
         int choice, live = 1;
-        double status;
+        double dmg_skill, status;
         player.reset(player);
         while(player.hp>0 && mob.hp>0) {
             Scanner scanner = new Scanner(System.in);
@@ -62,7 +62,6 @@ public class Fight {
                                     System.out.println("Not enough energy!");
                                     continue;
                                 }
-                                System.out.println("Status: " + status);
                                 break;
                         }
                         break;
@@ -81,7 +80,7 @@ public class Fight {
 
             if(mob.hp>0){
                 if(!mob.stun){
-                    if(mob.energy>2){ //atak/skill depends on enemy's energy
+                    if(mob.energy>2){ //attack/skill depends on enemy's energy
                         dmg_skill = mob.Skill(mob, player);
                         player.hp-=dmg_skill;
                         System.out.println("\n" + mob.nick + " dealt " + dmg_skill + " damage!");

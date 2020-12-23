@@ -1,6 +1,6 @@
 public class Mob_Deafening_Blow extends Mob{
-    Mob_Deafening_Blow(double strenght, double endurance, double vitality, double exp, int stamina, int lvl, String nick){
-        super(strenght, endurance, vitality, exp, stamina, lvl, nick);
+    Mob_Deafening_Blow(double strenght, double endurance, double vitality, double stamina, double exp, int lvl, String nick){
+        super(strenght, endurance, vitality, stamina, exp, lvl, nick);
     }
 
     @Override
@@ -23,7 +23,7 @@ public class Mob_Deafening_Blow extends Mob{
             stun = 1;
         }
         else{
-            System.out.println(attacker.nick + ANSI_YELLOW + " tried to stun " + ANSI_RESET + receiver.nick + " but didn't success!");
+            System.out.println(attacker.nick + " tried to " + ANSI_YELLOW + "stun " + ANSI_RESET + receiver.nick + " but didn't success!");
             stun = 0;
         }
         return stun;

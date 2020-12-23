@@ -30,6 +30,18 @@ public class Mob {
         if(damage<0) damage = 0;
         return damage;
     }
+    double FistAttack(Mob attacker, Mob receiver){
+        double damage;
+        damage = attacker.strenght - receiver.endurance;
+        if(damage<0) damage = 0;
+        return damage;
+    }
+    double Strong_fist_attack(Player attacker, Mob receiver){
+        double damage;
+        damage = attacker.strenght * 2 - receiver.endurance;
+        if(damage<0) damage = 0;
+        return damage;
+    }
     double Skill(Mob attacker, Mob receiver){
         double damage = attacker.Attack(attacker, receiver);
         return damage;

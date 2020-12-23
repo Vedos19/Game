@@ -13,6 +13,30 @@ public class Player extends Mob{
         if(damage<0) damage = 0;
         return damage;
     }
+    int Fist_Deafening_blow(Player attacker, Mob receiver){
+        int rng, stun;
+        rng = random.nextInt(10);
+        if(rng==0){
+            receiver.stun_cooldown=3;
+            System.out.println(attacker.nick + ANSI_YELLOW + " stuns " + ANSI_RESET + receiver.nick + " for 3 turns!");
+            stun = 3;
+        }
+        else if(rng<4) {
+            receiver.stun_cooldown=2;
+            System.out.println(attacker.nick + ANSI_YELLOW + " stuns " + ANSI_RESET + receiver.nick + " for 2 turns!");
+            stun = 2;
+        }
+        else if(rng<8){
+            receiver.stun_cooldown=1;
+            System.out.println(attacker.nick + ANSI_YELLOW + " stuns " + ANSI_RESET + receiver.nick + " for 1 turn!");
+            stun = 1;
+        }
+        else{
+            System.out.println(attacker.nick + ANSI_YELLOW + " tried to stun " + ANSI_RESET + receiver.nick + " but didn't success!");
+            stun = 0;
+        }
+        return stun;
+    }
     double Strong_Attack(Player attacker, Mob receiver){
         double damage;
         damage = attacker.strenght * 2 - receiver.endurance;
@@ -62,7 +86,7 @@ public class Player extends Mob{
             stun = 1;
         }
         else{
-            System.out.println(attacker.nick + ANSI_YELLOW + " tried to stun " + ANSI_RESET + receiver.nick + " but didn't success!");
+            System.out.println(attacker.nick + " tried to " + ANSI_YELLOW + "stun " + ANSI_RESET + receiver.nick + " but didn't success!");
             stun = 0;
         }
         return stun;

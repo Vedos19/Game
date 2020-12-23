@@ -1,6 +1,6 @@
 public class Mob_Tearing_Cut extends Mob{
-    Mob_Tearing_Cut(double strenght, double endurance, double vitality, double exp, int stamina, int lvl, String nick){
-        super(strenght, endurance, vitality, exp, stamina, lvl, nick);
+    Mob_Tearing_Cut(double strenght, double endurance, double vitality, double stamina, double exp, int lvl, String nick){
+        super(strenght, endurance, vitality, stamina, exp, lvl, nick);
     }
 
     @Override

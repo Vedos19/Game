@@ -14,7 +14,7 @@ public static void main(String[] args) {
         Mob_Deafening_Blow bandit1 = new Mob_Deafening_Blow(5, 4,7,100,3, 2, "Thug");
         Mob_Tearing_Cut bandit2 = new Mob_Tearing_Cut(7, 3,6,150,3, 2, "Cutthroat");
         Mob_Strong_Attack bandit3 = new Mob_Strong_Attack(6, 6,8,250,3, 3, "Bandit Leader");
-
+        
         //fight_1, city_1
         do path_lvl += Path.path(player, wolf1, wolf2, wolf3);
         while(path_lvl!=1);
