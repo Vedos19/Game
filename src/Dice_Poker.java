@@ -7,7 +7,7 @@ public class Dice_Poker extends Dice_Pack{
         scanner.nextLine();
     }
     public static int Play_Dice_Poker(Player player){
-        int player1_points=0, player2_points=0, player1_score=0, player2_score=0, bet;
+        int player1_points, player2_points, player1_score=0, player2_score=0, bet;
         Scanner scanner = new Scanner(System.in);
         Dice_Pack pack1 = new Dice_Pack();
         Dice_Pack pack2 = new Dice_Pack();

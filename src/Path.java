@@ -1,10 +1,10 @@
 public class Path {
-    public static int path(Player player, Mob mob1, Mob mob2, Mob mob3){
+    public static int path(Player player, Equipment equipment, Pocket pocket, Mob mob1, Mob mob2, Mob mob3){
         int pass;
 
-        if(Fight.fight(player, mob1)==1)
-            if(Fight.fight(player, mob2)==1)
-                if(Fight.fight(player, mob3)==1)
+        if(Fight.fight(player, mob1, equipment, pocket)==1)
+            if(Fight.fight(player, mob2, equipment, pocket)==1)
+                if(Fight.fight(player, mob3, equipment, pocket)==1)
                     pass=1;
                 else
                     pass = 0;

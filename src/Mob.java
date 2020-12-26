@@ -10,11 +10,11 @@ public class Mob {
         this.strenght = strenght;
         this.endurance = endurance;
         this.vitality = vitality;
-        hp = vitality*4;
         this.stamina = stamina;
+        hp = vitality*4;
         energy = stamina;
-        this.lvl = lvl;
         this.exp = exp;
+        this.lvl = lvl;
         this.nick = nick;
     }
 
@@ -24,9 +24,9 @@ public class Mob {
     protected String nick;
     Random random = new Random();
 
-    double Attack(Mob attacker, Mob receiver){
+    double Attack(Mob attacker, Mob receiver, double a_def){
         double damage;
-        damage = attacker.strenght - receiver.endurance;
+        damage = attacker.strenght - receiver.endurance - a_def;
         if(damage<0) damage = 0;
         return damage;
     }
@@ -42,8 +42,8 @@ public class Mob {
         if(damage<0) damage = 0;
         return damage;
     }
-    double Skill(Mob attacker, Mob receiver){
-        double damage = attacker.Attack(attacker, receiver);
+    double Skill(Mob attacker, Mob receiver, double a_def){
+        double damage = attacker.Attack(attacker, receiver, a_def);
         return damage;
     }
     void stunCooldown(Mob receiver){
@@ -61,6 +61,30 @@ public class Mob {
             System.out.println(attacker.nick + "'s" + ANSI_RED + " bleed" + ANSI_RESET + " dealt 2 damage");
         }
     }
+    int giveBleed(Mob attacker, Mob receiver){
+        int rng, bleed;
+        rng = random.nextInt(10);
+        if(rng==0){
+            receiver.bleed_cooldown=3;
+            System.out.println(receiver.nick + " is" + ANSI_RED + " bleeding " + ANSI_RESET + "for 3 turns!");
+            bleed = 3;
+        }
+        else if(rng<4) {
+            receiver.bleed_cooldown=2;
+            System.out.println(receiver.nick + " is" + ANSI_RED + " bleeding " + ANSI_RESET + "for 2 turns!");
+            bleed = 2;
+        }
+        else if(rng<8){
+            receiver.bleed_cooldown=1;
+            System.out.println(receiver.nick + " is" + ANSI_RED + " bleeding " + ANSI_RESET + "for 1 turn!");
+            bleed = 1;
+        }
+        else{
+            System.out.println(attacker.nick + " tried to " + ANSI_RED + "bleed " + ANSI_RESET + receiver.nick + " out but didn't success!");
+            bleed = 0;
+        }
+        return bleed;
+    }
     void GetExp(Player player, Mob deadMob){
         player.exp += deadMob.exp;
     }
@@ -70,6 +94,7 @@ public class Mob {
         mob.bleed_cooldown = 0;
         mob.hp = mob.vitality*4;
         mob.energy = mob.stamina/3;
+        mob.energy -= mob.energy%1;
     }
 
     @Override

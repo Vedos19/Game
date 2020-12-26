@@ -4,7 +4,7 @@ public class Mob_Tearing_Cut extends Mob{
     }
 
     @Override
-    double Skill(Mob attacker, Mob receiver){
+    double Skill(Mob attacker, Mob receiver, double a_def){
         int rng, bleed;
         rng = random.nextInt(10);
         if(rng==0){

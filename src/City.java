@@ -1,10 +1,15 @@
 import java.util.Scanner;
 
 public class City {
-    public static int enter_city(Player player, int city_lvl){
+    public static int enter_city(Player player, Equipment equipment, int city_lvl){
         int choice, leave=0;
         Scanner scanner = new Scanner(System.in);
 
+        //Creating items for shops
+        Weapon dagger1 = new Weapon("Handy Dagger", 25, 2, 1);
+        Weapon sword1 = new Weapon("One-handed Sword", 25, 2, 2);
+        Weapon mace1 = new Weapon("Iron Mace", 25, 3, 3);
+        Armor armor1 = new Armor("Studded Jacket", 30, 1, 1);
 
         System.out.println("\nYou entered the city!");
         do{
@@ -17,10 +22,14 @@ public class City {
                         choice = scanner.nextInt();
                         switch(choice){
                             case 1:
-                                System.out.println("You could use a better weapon!");
+                                equipment.showWeapon();
+                                System.out.println("You could use a better weapon!\n\n" + dagger1 + "\n\n" + sword1 + "\n\n" + mace1 +
+                                        "\nNeed something?\n1. " + dagger1.name + " (" + dagger1.value + ")\n2. "
+                                        + sword1.name + " (" + sword1.value + ")\n3. " + mace1.name + " (" + mace1.value + ")\n4. Return");
                                 break;
                             case 2:
                                 System.out.println("You need a better armor!");
+                                equipment.showArmor();
                                 break;
                             case 3:
                                 System.out.println("Take a look at my wares!");
@@ -52,7 +61,7 @@ public class City {
                                 continue;
                             }
                             if(choice==1) {
-                                Mob_Deafening_Blow boxer = new Mob_Deafening_Blow(7,3,3,3,10,2,"Drunk boxer");
+                                Mob_Deafening_Blow boxer = new Mob_Deafening_Blow(7,3,15,10,0,2,"Pijany pięściarz");
                                 if(Fist_Fight.fist_fight(player, boxer)==1){
                                     System.out.println("Good fight!\nYou earned 20 coins!");
                                     player.gold+=20;

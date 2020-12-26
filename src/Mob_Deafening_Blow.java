@@ -4,7 +4,7 @@ public class Mob_Deafening_Blow extends Mob{
     }
 
     @Override
-    double Skill(Mob attacker, Mob receiver){
+    double Skill(Mob attacker, Mob receiver, double a_def){
         int rng, stun;
         rng = random.nextInt(10);
         if(rng==0){
@@ -23,7 +23,7 @@ public class Mob_Deafening_Blow extends Mob{
             stun = 1;
         }
         else{
-            System.out.println(attacker.nick + " tried to " + ANSI_YELLOW + "stun " + ANSI_RESET + receiver.nick + " but didn't success!");
+            System.out.println(attacker.nick + ANSI_YELLOW + " tried to stun " + ANSI_RESET + receiver.nick + " but didn't success!");
             stun = 0;
         }
         return stun;
