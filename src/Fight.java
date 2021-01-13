@@ -77,18 +77,18 @@ public class Fight {
                     case 3:
                         pocket.showItemPocket();
                         System.out.print("5. Return\nYour choice: ");
-                        choice = scanner.nextInt() - 1;
+                        choice = scanner.nextInt();
                         if(pocket.tool_pocket[choice]>0){
                             pocket.tool_pocket[choice]--;
                             switch(choice){
-                                case 0:
+                                case 1:
                                     System.out.print(player.nick + " used a small healing potion.\n" + player.hp);
                                     player.hp+=10;
                                     if(player.hp>player.vitality*4)
                                         player.hp=player.vitality*4;
                                     System.out.print(" -> " + player.hp + "\n");
                                     break;
-                                case 1:
+                                case 2:
                                     player.energy+=3;
                                     System.out.print(player.nick + " used a small energy potion.\n" + player.energy);
                                     if(player.energy>player.stamina)
@@ -96,13 +96,13 @@ public class Fight {
                                     System.out.print(" -> " + player.energy + "\n");
                                     pocket.tool_pocket[1]--;
                                     break;
-                                case 2:
+                                case 3:
                                     System.out.println("Tool1");
                                     break;
-                                case 3:
+                                case 4:
                                     System.out.println("Tool2");
                                     break;
-                                case 4:
+                                case 5:
                                     System.out.println("Return...");
                                     continue;
                                 default:

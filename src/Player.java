@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Player extends Mob{
-    Player(double strenght, double endurance, double vitality, double stamina, double exp, int lvl, String nick, int gold){
+    Player(int strenght, int endurance, int vitality, int stamina, int exp, int lvl, String nick, int gold){
         super(strenght, endurance, vitality, stamina, exp, lvl, nick);
         this.gold = gold;
         hp = vitality*4;
@@ -38,9 +38,9 @@ public class Player extends Mob{
         }
         return stun;
     }
-    void setVitality(double vitality){ this.vitality = vitality; }
-    void setStrenght(double strenght){ this.strenght = strenght; }
-    void setEndurance(double endurance){
+    void setVitality(int vitality){ this.vitality = vitality; }
+    void setStrenght(int strenght){ this.strenght = strenght; }
+    void setEndurance(int endurance){
         this.endurance = endurance;
     }
     public void create(Player player){
@@ -59,10 +59,10 @@ public class Player extends Mob{
         }
         else {
             System.out.print("\n" +
-                    "You have 5 points to distribute.\n\nThe process cannot be undone!\n\n" +
-                    "Strength (" + player.strenght + ") - Increases damage dealt\n" +
-                    "Endurance (" + player.endurance + ") - Increases your resistance\n" +
-                    "Vitality (" + player.vitality + ") - Increases your health by 4\n\n");
+                    "You have 5 points to distribute.\nThe process cannot be undone!\n\n" +
+                    "Strength..: Increases damage dealt by 1\n" +
+                    "Endurance.: Increases your resistance by 1\n" +
+                    "Vitality..: Increases your health by 4\n\n");
             player.upgrade(player, 5);
         }
     }
@@ -70,8 +70,8 @@ public class Player extends Mob{
         Scanner scanner = new Scanner(System.in);
         for(int i=0;i<points;i++)
         {
-            System.out.print((points-i) + " points left!\n1. Strength (" + player.strenght + ")\n2. Endurance (" + player.endurance + ")" +
-                    "\n3. Vitality (" + player.vitality + ")\nYour choice: ");
+            System.out.print((points-i) + " points left!\n1. +1 Strength (" + player.strenght + ")\n2. +1 Endurance (" + player.endurance + ")" +
+                    "\n3. +1 Vitality (" + player.vitality + ")\nYour choice: ");
             int choice = scanner.nextInt();
 
             switch(choice){
@@ -89,7 +89,7 @@ public class Player extends Mob{
                     System.out.println("\nWrong choice!\n"); i--;
             }
         }
-        System.out.println("Your character:\n" + player.nick + "\nStrength (" + player.strenght + ")\nEndurance (" + player.endurance + ")" +
+        System.out.println("\nYour character:\n" + player.nick + "\nStrength (" + player.strenght + ")\nEndurance (" + player.endurance + ")" +
                 "\nVitality (" + player.vitality + ")");
     }
 }

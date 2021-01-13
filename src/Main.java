@@ -15,7 +15,7 @@ public class Main {
                 Weapon sword0 = new Weapon("Rusty Sword", 10, 1, 2);
                 Weapon mace0 = new Weapon("Light Mace", 10, 1, 3);
                 Armor armor0 = new Armor("\n" + "Worn Travel Clothes", 1, 0, 1);
-                Equipment equipment = new Equipment(mace0, armor0);
+                Equipment equipment = new Equipment(sword0, armor0);
                 Pocket pocket = new Pocket();
 
                 Player player = new Player(3, 3, 3, 4, 1, 0, "Vedos", 30);
@@ -27,7 +27,7 @@ public class Main {
                 Mob_Tearing_Cut wolf3 = new Mob_Tearing_Cut(6, 3, 8, 3, 100, 2, "Alpha Wolf");
                 //lvl2
                 Mob_Deafening_Blow bandit1 = new Mob_Deafening_Blow(5, 5,8,7,150, 2, "Thug");
-                Mob_Tearing_Cut bandit2 = new Mob_Tearing_Cut(7, 3,6,3,2000, 2, "Cutthroat");
+                Mob_Tearing_Cut bandit2 = new Mob_Tearing_Cut(7, 3,6,3,200, 2, "Cutthroat");
                 Mob_Strong_Attack bandit3 = new Mob_Strong_Attack(6, 6,8,3,250, 3, "Bandit Leader");
 
                 //fight 1

@@ -1,5 +1,5 @@
 public class Mob_Deafening_Blow extends Mob{
-    Mob_Deafening_Blow(double strenght, double endurance, double vitality, double stamina, double exp, int lvl, String nick){
+    Mob_Deafening_Blow(int strenght, int endurance, int vitality, int stamina, int exp, int lvl, String nick){
         super(strenght, endurance, vitality, stamina, exp, lvl, nick);
     }
 

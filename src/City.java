@@ -61,7 +61,7 @@ public class City {
                                 continue;
                             }
                             if(choice==1) {
-                                Mob_Deafening_Blow boxer = new Mob_Deafening_Blow(7,3,15,10,0,2,"Pijany pięściarz");
+                                Mob_Deafening_Blow boxer = new Mob_Deafening_Blow(7,3,10,10,0,2,"Pijany pięściarz");
                                 if(Fist_Fight.fist_fight(player, boxer)==1){
                                     System.out.println("Good fight!\nYou earned 20 coins!");
                                     player.gold+=20;

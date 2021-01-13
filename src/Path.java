@@ -16,7 +16,7 @@ public class Path {
         if(pass==1)
             System.out.println("You survived your journey to the city!");
         else{
-            System.out.println("You died on a road!\n\nYou've been teleported back to the city.");
+            System.out.println("You've been teleported back to the city.");
             mob1.reset(mob1);
             mob2.reset(mob2);
             mob3.reset(mob3);

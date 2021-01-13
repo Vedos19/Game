@@ -7,7 +7,7 @@ public class Pocket {
         tool_pocket[1]=1;
     }
     //0 - pot hp || 1 - pot mana || 3 - tool1 || 4 - tool2
-    int[] tool_pocket = new int[4];
+    int[] tool_pocket = new int[5];
     Scanner scanner = new Scanner(System.in);
     ArrayList<Item> equipment_pocket = new ArrayList<>();
 

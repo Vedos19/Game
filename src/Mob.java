@@ -6,7 +6,7 @@ public class Mob {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
 
-    Mob(double strenght, double endurance, double vitality, double stamina, double exp, int lvl, String nick){
+    Mob(int strenght, int endurance, int vitality, int stamina, int exp, int lvl, String nick){
         this.strenght = strenght;
         this.endurance = endurance;
         this.vitality = vitality;
@@ -18,8 +18,7 @@ public class Mob {
         this.nick = nick;
     }
 
-    protected double strenght, endurance, vitality, stamina, hp, energy, exp;
-    protected int lvl, stun_cooldown, bleed_cooldown;
+    protected int strenght, endurance, vitality, stamina, hp, energy, exp, lvl, stun_cooldown, bleed_cooldown;
     protected boolean stun;
     protected String nick;
     Random random = new Random();
@@ -94,7 +93,6 @@ public class Mob {
         mob.bleed_cooldown = 0;
         mob.hp = mob.vitality*4;
         mob.energy = mob.stamina/3;
-        mob.energy -= mob.energy%1;
     }
 
     @Override
