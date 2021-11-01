@@ -6,15 +6,15 @@ public class Dice_Poker extends Dice_Pack{
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
-    public static int Play_Dice_Poker(Player player){
+    public static int Play_Dice_Poker(String nick, Pocket player_pocket){
         int player1_points, player2_points, player1_score=0, player2_score=0, bet;
         Scanner scanner = new Scanner(System.in);
         Dice_Pack pack1 = new Dice_Pack();
         Dice_Pack pack2 = new Dice_Pack();
         pack1.Dice_instruction_ENG();
 
-        System.out.println("Your money: " + player.gold);
-        if(player.gold<5){
+        System.out.println("Your money: " + player_pocket.gold);
+        if(player_pocket.gold<5){
             System.out.println("You don't have enough money!");
             return 0;
         }
@@ -22,7 +22,7 @@ public class Dice_Poker extends Dice_Pack{
         do {
             System.out.println("\nEnter the bet amount (5-20)");
             bet = scanner.nextInt();
-            if(player.gold<bet){
+            if(player_pocket.gold<bet){
                 System.out.println("You don't have that much!");
                 continue;
             }
@@ -35,7 +35,7 @@ public class Dice_Poker extends Dice_Pack{
             pack2.dice_reset(pack2);
             pack1.sort(pack1);
             pack2.sort(pack2);
-            System.out.println(player.nick + "'s dice roll:");
+            System.out.println(nick + "'s dice roll:");
             System.out.println(pack1);
             System.out.println("Opponent's roll:");
             System.out.println(pack2);
@@ -44,14 +44,14 @@ public class Dice_Poker extends Dice_Pack{
             System.out.println(pack1);
             pack2.reroll_bot(pack2);
             System.out.println(pack2);
-            System.out.println("Points " + player.nick + ": ");
+            System.out.println("Points " + nick + ": ");
             player1_points = pack1.check(pack1);
             System.out.println("\nOpponent's points: ");
             player2_points = pack2.check(pack2);
             //round win
             if(player1_points > player2_points){
                 player1_score+=1;
-                System.out.println(ANSI_GREEN + "\n" + player.nick + " wins a round!" + ANSI_RESET);
+                System.out.println(ANSI_GREEN + "\n" + nick + " wins a round!" + ANSI_RESET);
             }
             else if(player2_points > player1_points){
                 player2_score+=1;
@@ -59,7 +59,7 @@ public class Dice_Poker extends Dice_Pack{
             }
             else
                 System.out.println("Draw!");
-            System.out.println(player.nick + " (" + player1_score + ") vs opponent (" + player2_score + ")\n");
+            System.out.println(nick + " (" + player1_score + ") vs opponent (" + player2_score + ")\n");
             promptEnterKey();
         }
 

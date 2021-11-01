@@ -1,12 +1,12 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Player extends Mob{
-    Player(int strenght, int endurance, int vitality, int stamina, int exp, int lvl, String nick, int gold){
+    Player(int strenght, int endurance, int vitality, int stamina, int exp, int lvl, String nick){
         super(strenght, endurance, vitality, stamina, exp, lvl, nick);
-        this.gold = gold;
         hp = vitality*4;
     }
-    int gold;
+    Random random = new Random();
 
     double Attack(Player attacker, Mob receiver, double w_dmg){
         double damage;
@@ -43,19 +43,17 @@ public class Player extends Mob{
     void setEndurance(int endurance){
         this.endurance = endurance;
     }
-    public void create(Player player){
+    public void create(){
         Scanner scanner = new Scanner(System.in);
-        String nick;
         System.out.print("Welcome in character creator!\n\nChoose your name: ");
-        nick = scanner.nextLine();
-        player.nick = nick;
+        String nick = scanner.nextLine();
 
         //easter_egg
         if(nick.equals("Vedoes")){
-            player.setStrenght(this.strenght+97);
-            player.setEndurance(this.endurance+97);
-            player.setVitality(this.vitality+247);
-            player.hp+=989;
+            setStrenght(this.strenght+97);
+            setEndurance(this.endurance+97);
+            setVitality(this.vitality+247);
+            hp+=989;
         }
         else {
             System.out.print("\n" +
@@ -63,33 +61,41 @@ public class Player extends Mob{
                     "Strength..: Increases damage dealt by 1\n" +
                     "Endurance.: Increases your resistance by 1\n" +
                     "Vitality..: Increases your health by 4\n\n");
-            player.upgrade(player, 5);
+            upgrade(5);
         }
     }
-    public void upgrade(Player player, int points){
+    public void upgrade(int points){
         Scanner scanner = new Scanner(System.in);
         for(int i=0;i<points;i++)
         {
-            System.out.print((points-i) + " points left!\n1. +1 Strength (" + player.strenght + ")\n2. +1 Endurance (" + player.endurance + ")" +
-                    "\n3. +1 Vitality (" + player.vitality + ")\nYour choice: ");
+            System.out.print((points-i) + " points left!\n1. +1 Strength (" + strenght + ")\n2. +1 Endurance (" + endurance + ")" +
+                    "\n3. +1 Vitality (" + vitality + ")\nYour choice: ");
             int choice = scanner.nextInt();
 
             switch(choice){
                 case 1:
-                    player.setStrenght(this.strenght+1);
+                    setStrenght(this.strenght+1);
                     break;
                 case 2:
-                    player.setEndurance(this.endurance+1);
+                    setEndurance(this.endurance+1);
                     break;
                 case 3:
-                    player.setVitality(this.vitality+1);
-                    player.hp+=4;
+                    setVitality(this.vitality+1);
+                    hp+=4;
                     break;
                 default:
                     System.out.println("\nWrong choice!\n"); i--;
             }
         }
-        System.out.println("\nYour character:\n" + player.nick + "\nStrength (" + player.strenght + ")\nEndurance (" + player.endurance + ")" +
-                "\nVitality (" + player.vitality + ")");
+        System.out.println("\nYour character:\n" + nick + "\nStrength (" + strenght + ")\nEndurance (" + endurance + ")" +
+                "\nVitality (" + vitality + ")");
+    }
+    public boolean drink(){
+        beer_counter++;
+        int chance = random.nextInt(100);
+        System.out.println(chance + " vs " + (60 + endurance*3 - beer_counter*10) + " <-- your chance");
+        if(chance > 60 + endurance*3 - beer_counter*10)
+            return false;
+        return true;
     }
 }

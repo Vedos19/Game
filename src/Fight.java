@@ -18,7 +18,7 @@ public class Fight {
                     ANSI_CYAN + player.energy + ANSI_RESET + ") vs " + mob.nick + " (" + ANSI_RED + mob.hp + ANSI_RESET + "|" +
                     ANSI_CYAN + mob.energy + ANSI_RESET + ")\n");
             if(!player.stun){
-                System.out.print("1. Regular attack\n2. Skill list\n3. Equipment\nYour choice: ");
+                System.out.print("1. Attack\n2. Skill list\n3. Equipment\nYour choice: ");
                 choice = scanner.nextInt();
                 switch(choice){
                     case 1:
@@ -26,17 +26,16 @@ public class Fight {
                         System.out.println("\n\n\n\n\n\n\n\n\n\n\n" + player.nick + " dealt " + player.Attack(player, mob, equipment.w_dmg) + " damage!");
                         break;
                     case 2:
-                        if(equipment.w_type==1)
-                            System.out.print("1. Stab (2pm)\n2. Tearing Cut (3pm)\n3. Flurry (4pm)\n4. Powrót\nWybór: ");
-                        else if(equipment.w_type==2)
-                            System.out.print("1. Slash (2pm)\n2. Fury Slashes (3pm)\n3. Mighty Swing (4pm)\n4. Powrót\nWybór: ");
-                        else if(equipment.w_type==3)
-                            System.out.print("1. Heavy Slam (2pm)\n2. Crushing Blow (3pm)\n3. Powerful Blow (4pm)\n4. Return\nYour choice: ");
+                        if(equipment.w_type.equals("Sword"))
+                            System.out.print("1. Slash (2pm)\n2. Fury Slashes (3pm)\n3. Mighty Swing (4pm)\n4. Return\n\nYour choice: ");
+                        else if(equipment.w_type.equals("Dagger"))
+                            System.out.print("1. Stab (2pm)\n2. Tearing Cut (3pm)\n3. Flurry (4pm)\n4. Return\n\nYour choice: ");
+                        else if(equipment.w_type.equals("Mace"))
+                            System.out.print("1. Heavy Slam (2pm)\n2. Crushing Blow (3pm)\n3. Powerful Blow (4pm)\n4. Return\n\nYour choice: ");
                         choice = scanner.nextInt();
                         switch(choice){
                             case 1:
-                                if(player.energy>1)
-                                {
+                                if(player.energy>1) {
                                     equipment.Skill1(player, mob, equipment.w_dmg, equipment.w_type);
                                     player.energy-=2;
                                 }
@@ -46,8 +45,7 @@ public class Fight {
                                 }
                                 break;
                             case 2:
-                                if(player.energy>2)
-                                {
+                                if(player.energy>2){
                                     equipment.Skill2(player, mob, equipment.w_dmg, equipment.w_type);
                                     player.energy-=3;
                                 }
@@ -57,8 +55,7 @@ public class Fight {
                                 }
                                 break;
                             case 3:
-                                if(player.energy>3)
-                                {
+                                if(player.energy>3) {
                                     equipment.Skill3(player, mob, equipment.w_dmg, equipment.w_type);
                                     player.energy-=4;
                                 }
@@ -75,7 +72,7 @@ public class Fight {
                         }
                         break;
                     case 3:
-                        pocket.showItemPocket();
+                        pocket.showToolPocket();
                         System.out.print("5. Return\nYour choice: ");
                         choice = scanner.nextInt();
                         if(pocket.tool_pocket[choice]>0){
@@ -102,9 +99,6 @@ public class Fight {
                                 case 4:
                                     System.out.println("Tool2");
                                     break;
-                                case 5:
-                                    System.out.println("Return...");
-                                    continue;
                                 default:
                                     continue;
                             }
@@ -126,7 +120,7 @@ public class Fight {
 
             if(mob.hp>0){
                 if(!mob.stun){
-                    if(mob.energy>2){ //attack/skill depends on enemy's energy
+                    if(mob.energy>2){
                         dmg_skill = mob.Skill(mob, player, equipment.a_def);
                         player.hp-=dmg_skill;
                         System.out.println("\n" + mob.nick + " dealt " + dmg_skill + " damage!");

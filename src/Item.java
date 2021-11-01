@@ -1,9 +1,9 @@
 public class Item {
-    Item(String name, double value){
+    Item(String name, int value){
         this.name = name;
         this.value = value;
     }
     String name;
-    double value;
+    int value;
 
 }

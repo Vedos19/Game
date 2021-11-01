@@ -16,7 +16,7 @@ public class Fist_Fight {
                     ANSI_CYAN + player.energy + ANSI_RESET + ") vs " + mob.nick + " (" + ANSI_RED + mob.hp + ANSI_RESET + "|" +
                     ANSI_CYAN + mob.energy + ANSI_RESET + ")\n");
             if(!player.stun){
-                System.out.print("1. Fist attack\n2. Strong attack\n3. Stunning blow\nYour choice: ");
+                System.out.print("1. Attack\n2. Strong attack\n3. Stunning blow\nYour choice: ");
                 choice = scanner.nextInt();
                 switch(choice){
                     case 1:

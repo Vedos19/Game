@@ -18,7 +18,7 @@ public class Mob {
         this.nick = nick;
     }
 
-    protected int strenght, endurance, vitality, stamina, hp, energy, exp, lvl, stun_cooldown, bleed_cooldown;
+    protected int strenght, endurance, vitality, stamina, hp, energy, exp, lvl, stun_cooldown, bleed_cooldown, beer_counter;
     protected boolean stun;
     protected String nick;
     Random random = new Random();
@@ -88,11 +88,12 @@ public class Mob {
         player.exp += deadMob.exp;
     }
     public void reset(Mob mob) {
-        mob.stun = false;
-        mob.stun_cooldown = 0;
-        mob.bleed_cooldown = 0;
-        mob.hp = mob.vitality*4;
-        mob.energy = mob.stamina/3;
+        stun = false;
+        stun_cooldown = 0;
+        bleed_cooldown = 0;
+        beer_counter = 0;
+        hp = vitality*4;
+        energy = stamina/3;
     }
 
     @Override
